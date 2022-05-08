@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wingchi.user.mapper.ShoppingCartMapper">
+
+    <resultMap id="CartMap" type="com.wingchi.user.vo.ShoppingCart">
+        <id property="Id" column="cartId"></id>
+        <result property="skuId" column="id"></result>
+        <result property="skuName" column="name"></result>
+        <result property="price" column="price"></result>
+        <result property="skuImage" column="images"></result>
+        <result property="amount" column="amount"></result>
+    </resultMap>
+
+    <select  id="selectCartById" resultMap="CartMap">
+        select car.id as cartId, sku.id, sku.name,sku.images,car.price,car.amount
+        from shoppingcart car, sku
+        where car.sku_id=sku.id and  car.user_id=#{userId};
+    </select>
+</mapper>

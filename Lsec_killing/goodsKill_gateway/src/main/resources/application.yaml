@@ -1,0 +1,27 @@
+server:
+  port: 4500
+spring:
+  application:
+    name: goodskill_gateway #服务名称
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      routes:
+        - id : userService
+          uri: lb://User
+          predicates:
+            - Path=/user/** # 路径是否以seckillUser开头，如果是则符合
+        - id: webService
+          uri: lb://Web
+          predicates:
+            - Path=/web/**
+        - id: productService
+          uri: lb://Product
+          predicates:
+            - Path=/product/**, /resources/**
+        - id: orderService
+          uri: lb://order
+          predicates:
+            - Path=/order/**

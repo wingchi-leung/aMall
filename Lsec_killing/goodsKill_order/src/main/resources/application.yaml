@@ -1,0 +1,22 @@
+server:
+  port: 3700
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/goods_kill?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: ss123000
+  application:
+    name: order
+  cloud:
+    nacos:
+      discovery:
+        server-addr:  localhost:8848
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 日志： 标准输出
+    aggressive-lazy-loading: false  # 消极加载、按需加载
+    lazy-loading-enabled: true   # 延迟加载
+    map-underscore-to-camel-case: true  #开启驼峰写法
+  mapper-locations:
+    - classpath*:/mapper/**/*.xml

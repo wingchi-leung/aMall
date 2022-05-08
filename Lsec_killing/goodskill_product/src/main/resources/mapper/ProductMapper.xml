@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wingchi.product.mapper.ProductMapper">
+
+    <select id="selectAllBycategory" resultType="com.wingchi.product.beans.SKU" parameterType="string" >
+        select id,name,title,price,selling_price,images
+        from `sku`
+        where category_name = #{category}
+    </select>
+
+
+    <select id="selectAllByAllcategory" resultType="com.wingchi.product.beans.SKU">
+        select id,name,title,price,selling_price,images from `sku`
+        <where>
+            <foreach collection="list" item="item"
+              open = " `category_name` in (" separator="," close = ")">
+                #{item}
+            </foreach>
+        </where>
+
+    </select>
+
+
+<!--    <select id="selectBycategoryList"  resultMap="imageMap">-->
+<!--        select *from image-->
+<!--        <where>-->
+<!--            <foreach collection="list"  item="item"-->
+<!--                     open= " `category` in ( "  separator="," close=")"  >-->
+<!--                #{item}-->
+<!--            </foreach>-->
+<!--        </where>-->
+<!--    </select>-->
+
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wingchi.product.mapper.ImageMapper">
+    <resultMap id="imageMap" type="com.wingchi.product.beans.Image">
+        <id column="url" property="url"></id>
+        <result column="name" property="name"></result>
+        <result column="category" property="category"></result>
+    </resultMap>
+
+
+    <select id="selectMainByCategory"  resultType="com.wingchi.product.beans.Image" >
+        select url,image.name,category
+        from image,sku
+        where image.sku_id=sku.id and image.category=#{category} and image.isMain=1
+    </select>
+
+
+    <select id="selectByID" resultType="com.wingchi.product.beans.Image" parameterType="java.lang.Long">
+        select url,name,category
+        from image
+        where image.sku_id=#{productId} and image.isMain=0
+    </select>
+
+</mapper>
