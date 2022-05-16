@@ -6,11 +6,11 @@
 
 项目的前端使用的是github创作者@[hai-27](https://github.com/hai-27)写的 [vue-store](https://github.com/hai-27/vue-store)，我在他的基础上进行了一些修改。
 
-**感谢[hai-27](https://github.com/hai-27)的无私分享。**
+**感谢[hai-27](https://github.com/hai-27)的开源分享。**
 
-第二：项目的数据库设计是@[hfbin](https://github.com/hfbin/Seckill)的秒杀项目[Seckill](https://github.com/hfbin/Seckill)设计上修改的。
+项目的数据库设计是@[hfbin](https://github.com/hfbin/Seckill)的秒杀项目[Seckill](https://github.com/hfbin/Seckill)设计上修改的。
 
-**在这里表示感谢。**
+**感谢@[hfbin](https://github.com/hfbin/Seckill)的开源分享。**
 
 如果作者看到认为不妥的，请联系我将项目删除。 
 
@@ -18,7 +18,7 @@
 
 aMall是一个电商系统，使用了SpringCloud+Mybatis实现。前端技术栈为Vue
 
-![image-20220516152508471](D:\新建文件夹\MyGoodkiller\README.assets\image-20220516152508471.png)
+![image-20220516152508471](https://raw.githubusercontent.com/wingchi-leung/aMall/main/README.assets/image-20220516152508471.png)
 
 已实现的功能
 
@@ -38,7 +38,7 @@ aMall是一个电商系统，使用了SpringCloud+Mybatis实现。前端技术�
 
 秒杀模块的设计图：
 
-![image-20220516144154387](D:\新建文件夹\MyGoodkiller\README.assets\image-20220516144154387.png)
+![image-20220516144154387](https://raw.githubusercontent.com/wingchi-leung/aMall/main/README.assets/image-20220516144154387.png)
 
 ### 如何运行
 
