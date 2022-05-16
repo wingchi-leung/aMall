@@ -13,7 +13,7 @@ import java.util.Map;
 public class JwtUtil {
     private static final Logger LOGGER= LoggerFactory.getLogger(JwtUtil.class) ;
     private static final String SECRET = "my_secret" ;  // 密钥
-    private static final Long EXPIRATION = 1800L ; //过期时间1800秒
+    private static final Long EXPIRATION = 21600L ; //过期时间1800秒
 
     private static Date createExpirationDate(){
         return new Date(System.currentTimeMillis()+EXPIRATION*1000);
@@ -22,7 +22,7 @@ public class JwtUtil {
         return Jwts.builder()
                 .setSubject(userName)
                 .setId(userId)
-                .claim("user_id", userId)
+                .claim("userId", userId)
                 .claim("userName",userName)
                 .setExpiration(createExpirationDate())
                 .signWith(SignatureAlgorithm.HS256,SECRET)

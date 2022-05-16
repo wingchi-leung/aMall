@@ -16,9 +16,4 @@ public class UserController {
         return "hello,you are great!" ;
     }
 
-    @GetMapping("/shop")
-    @PreAuthorize("hasAuthority('store_manager')")
-    public String StoreManager(){
-        return "你是店家！";
-    }
 }

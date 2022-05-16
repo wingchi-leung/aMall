@@ -1,15 +1,11 @@
 package com.wingchi.user.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.wingchi.user.bean.userSkuDto;
 import com.wingchi.user.bean.RespBean;
 import com.wingchi.user.service.ShoppingCartService;
-import com.wingchi.user.vo.ShoppingCart;
+import com.wingchi.user.dto.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,25 +15,36 @@ public class shoppingCartController {
 
     @Autowired
     ShoppingCartService cartService;
-    
-    
-    @PostMapping("/getShoppingCart")
-    public RespBean getShoppingCart(@RequestBody String userId){
-        userSkuDto jsonBean = JSON.parseObject(userId, userSkuDto.class);
-        List<ShoppingCart> shoppingCart = cartService.getShoppingCartById(jsonBean.getUserId());
+
+    @GetMapping("/{userId}")
+    public RespBean getShoppingCart(@PathVariable String userId){
+        List<ShoppingCart> shoppingCart = cartService.getShoppingCartById(Long.valueOf(userId));
         return new RespBean("001","成功",shoppingCart);
     }
 
-    @PostMapping("/updateShoppingCart")
-    public RespBean updateShoppingCart(@RequestBody String data) {
-        return null;
+    /**
+     * 更新购物车中商品的值
+     */
+    @PutMapping("/{userId}/{productId}/{num}")
+    public RespBean updateShoppingCart(@PathVariable String num, @PathVariable String productId, @PathVariable String userId) {
+        System.out.println(num);
+        System.out.println(productId);
+        System.out.println(userId);
+        cartService.updateCart(Integer.valueOf(num), Long.valueOf(productId), Long.valueOf(userId));
+        return new RespBean("001", "成功", null);
     }
 
-    @PostMapping("/addShoppingCart")
-    public RespBean addShoppingCart(@RequestBody String detail) {
-        userSkuDto dto = JSON.parseObject(detail, userSkuDto.class);
-
-        return null;
+    /**
+     * 添加商品到购物车
+     */
+    @PostMapping("/{userId}")
+    public RespBean addShoppingCart(@RequestBody String product,
+                                    @PathVariable String userId) {
+        System.out.println(product);
+        ShoppingCart shoppingCart = JSON.parseObject(product, ShoppingCart.class);
+        System.out.println(shoppingCart);
+        String code = cartService.addProduct(shoppingCart, Long.valueOf(userId));
+        return new RespBean(code,"成功",null);
     }
 
 }

@@ -5,14 +5,14 @@
 <mapper namespace="com.wingchi.product.mapper.ProductMapper">
 
     <select id="selectAllBycategory" resultType="com.wingchi.product.beans.SKU" parameterType="string" >
-        select id,name,title,price,selling_price,images
+        select id as skuId,name,title,price,selling_price,images
         from `sku`
         where category_name = #{category}
     </select>
 
 
     <select id="selectAllByAllcategory" resultType="com.wingchi.product.beans.SKU">
-        select id,name,title,price,selling_price,images from `sku`
+        select id as skuId,name,title,price,selling_price,images from `sku`
         <where>
             <foreach collection="list" item="item"
               open = " `category_name` in (" separator="," close = ")">
@@ -21,16 +21,12 @@
         </where>
 
     </select>
+    <select id="selectByskuId" resultType="com.wingchi.product.beans.SKU" parameterType="java.lang.Long">
+        select id as skuId, name,images,price,selling_price,title,description,category_name as categoryName,stock from `sku`
+        where id = #{productId}
+    </select>
+    <select id="selectSeckill">
 
-
-<!--    <select id="selectBycategoryList"  resultMap="imageMap">-->
-<!--        select *from image-->
-<!--        <where>-->
-<!--            <foreach collection="list"  item="item"-->
-<!--                     open= " `category` in ( "  separator="," close=")"  >-->
-<!--                #{item}-->
-<!--            </foreach>-->
-<!--        </where>-->
-<!--    </select>-->
+    </select>
 
 </mapper>

@@ -30,6 +30,10 @@ public class ProductService {
 
     //根据SkuID查找某个商品
     public SKU getProductByID(Long productId) {
-        return productMapper.selectById(productId) ;
+        return productMapper.selectByskuId(productId) ;
+    }
+
+    public void getSeckillProduct() {
+        productMapper.selectSeckill() ;
     }
 }

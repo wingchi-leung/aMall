@@ -16,7 +16,7 @@
           </div>
           <i class="el-icon-close delete" slot="reference" v-show="isDelete"></i>
         </el-popover>
-        <router-link :to="{ path: '/goods/details', query: {productID:item.id} }">
+        <router-link :to="{ path: '/goods/details', query: {productID:item.skuId} }">
 <!--           图片 -->
           <img :src="item.images" alt />
           <h2>{{item.name}}</h2>

@@ -170,39 +170,64 @@ create table `sku` (
     `price`  bigint(16)  COMMENT '以分为单位' ,
     `selling_price` bigint(16) COMMENT '以分为单位' ,
     `stock` int(8) COMMENT '库存' ,
-    `enable` tinyint(1)  ,
+    `enable` tinyint(1)  COMMENT '商品是否可卖,配合促销,0:不可 1:可',
     `category_name` varchar(20) ,
+    `promotion_type` int default 0 COMMENT '促销类型 0:无 1秒杀 ' ,
     `create_time` timestamp  ,
     `update_time` timestamp
 )ENGINE=InnoDB AUTO_INCREMENT=27359021560  DEFAULT CHARSET=utf8 COMMENT='sku' ;
 
 insert into `sku` values(2735902121,  NULL ,'Redmi K30',  NULL,'120Hz流速屏，全速热爱', '120Hz高帧率流速屏/ 索尼6400万前后六摄 / 6.67 小孔径全面屏 / 最高可选8GB+256GB大存储 / 高通骁龙730G处理器 / 3D四曲面玻璃机身 / 4500mAh+27W快充 / 多功能NFC',
-                         200000,  159900,10000,1, '手机' , (SELECT FROM_UNIXTIME(unix_timestamp(now()), '%Y-%m-%d %H:%i:%S')),NULL) ;
-
+                         200000,  159900,10000,1, '手机' , 0,CURRENT_TIMESTAMP ,NULL) ;
 insert into `sku` values(2735902122,  NULL ,'Redmi K30 5G',  NULL,'双模5G,120Hz流速屏', '双模5G / 三路并发 / 高通骁龙765G / 7nm 5G低功耗处理器 / 120Hz高帧率流速屏 / 6.67 小孔径全面屏 / 索尼6400万前后六摄 / 最高可选8GB+256GB大存储 / 4500mAh+30W快充 / 3D四曲面玻璃机身 / 多功能NFC',
-                         159900,  159900,900,1,'手机' ,(SELECT FROM_UNIXTIME(unix_timestamp(now()), '%Y-%m-%d %H:%i:%S')),NULL) ;
-
+                         159900,  159900,900,1,'手机' ,0,CURRENT_TIMESTAMP,NULL) ;
 insert into `sku` values(2735902123,  NULL ,'小米CC9 Pro',  NULL,'1亿像素,五摄四闪', '双模5G / 三路并发 / 高通骁龙765G / 7nm 5G低功耗处理器 / 120Hz高帧率流速屏 / 6.67 小孔径全面屏 / 索尼6400万前后六摄 / 最高可选8GB+256GB大存储 / 4500mAh+30W快充 / 3D四曲面玻璃机身 / 多功能NFC',
-                         259900,  259900,900,1,'手机' ,(SELECT FROM_UNIXTIME(unix_timestamp(now()), '%Y-%m-%d %H:%i:%S')),NULL) ;
-
-
+                         259900,  259900,900,1,'手机' ,0,CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%S')),NULL) ;
 insert into `sku` values(2735902124,  NULL ,'Redmi 8',  NULL,'5000mAh超长续航', '5000mAh超长续航 / 高通骁龙439八核处理器 / 4GB+64GB',
-                         79900,  69900,900,1,'手机' ,(SELECT FROM_UNIXTIME(unix_timestamp(now()), '%Y-%m-%d %H:%i:%S')),NULL) ;
-
+                         79900,  69900,900,1,'手机' ,0,CURRENT_TIMESTAMP,NULL) ;
 insert into `sku` values(2735902125,  NULL ,'Redmi 8A',  NULL,'5000mAh超长续航', '5000mAh超长续航 / 高通骁龙439八核处理器 / 4GB+64GB',
-                         69900,  59900,900,1,'手机' ,(SELECT FROM_UNIXTIME(unix_timestamp(now()), '%Y-%m-%d %H:%i:%S')),NULL) ;
-
-
--- insert into `sku` values(2735902126,  NULL ,'Redmi 8A',  NULL,'5000mAh超长续航', '5000mAh超长续航 / 高通骁龙439八核处理器 / 4GB+64GB',
---                          69900,  59900,900,1,'手机' ,(SELECT FROM_UNIXTIME(unix_timestamp(now()), '%Y-%m-%d %H:%i:%S')),NULL) ;
-
+                         69900,  59900,900,1,'手机' ,0,CURRENT_TIMESTAMP,NULL) ;
 insert into `sku` values(2735902127,  NULL ,'Redmi Note8 Pro',  NULL,'6400万全场景四摄', '6400万四摄小金刚拍照新旗舰超强解析力，超震撼',
-                         139900,  119900,900,1,'手机' ,(SELECT FROM_UNIXTIME(unix_timestamp(now()), '%Y-%m-%d %H:%i:%S')),NULL) ;
+                         139900,  119900,900,1,'手机' ,0,CURRENT_TIMESTAMP,NULL) ;
+insert into `sku` values(2735902128,  NULL ,'Redmi Note8',  'https://raw.githubusercontent.com/wingchi-leung/imageTemporay/main/Redmi-Note8.png','千元4800万四摄', '千元4800万四摄 | 高通骁龙665 | 小金刚品质保证',
+                         99900,  99900,900,1,'手机' ,0,CURRENT_TIMESTAMP,NULL) ;
 
-insert into `sku` values(2735902128,  NULL ,'Redmi Note8',  NULL,'千元4800万四摄', '千元4800万四摄 | 高通骁龙665 | 小金刚品质保证',
-                         99900,  99900,900,1,'手机' ,(SELECT FROM_UNIXTIME(unix_timestamp(now()), '%Y-%m-%d %H:%i:%S')),NULL) ;
+
+insert into `sku` values(2735902129,  NULL ,'米家互联网空调C1（一级能效）', 'https://raw.githubusercontent.com/wingchi-leung/imageTemporay/main/AirCondition-V1C1.png','变频节能省电，自清洁', '一级能效 | 1.5匹 | 全直流变频 | 高效制冷/热 | 静音设计 | 自清洁 | 全屋互联',
+                         259900,  269900,10,1,'空调' ,0,CURRENT_TIMESTAMP,NULL) ;
 
 
+insert into `sku` values(2735902130,  NULL ,'米家空调', 'https://raw.githubusercontent.com/wingchi-leung/imageTemporay/main/AirCondition-F3W1.png','出众静音，快速制冷热', '大1匹 | 三级能效 | 静音 | 快速制冷热 | 广角送风 | 除湿功能 | 高密度过滤网 | 典雅外观',
+                         169900,  179900,1000,1,'空调' ,0,CURRENT_TIMESTAMP,NULL) ;
+
+
+
+insert into `sku` values(2735902131,  NULL ,'米家互联网洗烘一体机 Pro 10kg', 'https://raw.githubusercontent.com/wingchi-leung/imageTemporay/main/Washer-Pro-10.png','智能烘洗，省心省力', '国标双A+级洗烘能力 / 22种洗烘模式 / 智能投放洗涤剂 / 支持小爱同学语音遥控 / 支持OTA在线智能升级 / 智能空气洗 / 除菌率达99.9%+',
+                         299900,  299900,1000,1,'洗衣机' ,0,CURRENT_TIMESTAMP,NULL) ;
+
+
+insert into `sku` values(2735902132,  NULL ,'小米电视4A 32英寸', 'https://raw.githubusercontent.com/wingchi-leung/imageTemporay/main/MiTv-4A-32.png', '人工智能系统，高清液晶屏','小米电视4A 32英寸 | 64位四核处理器 | 1GB+4GB大内存 | 人工智能系统',
+                         79900,  79900,100,1,'洗衣机' ,0,CURRENT_TIMESTAMP,NULL) ;
+
+insert into `sku` values(2735902133,  NULL ,'小米全面屏电视E55A', 'https://raw.githubusercontent.com/wingchi-leung/imageTemporay/main/MiTv-E55A.png', '人工智能系统，高清液晶屏','全面屏设计 | 内置小爱同学 | 4K + HDR | 杜比DTS | PatchWall | 海量内容 | 2GB + 8GB大存储 | 64位四核处理器',
+                         189900,  209900,100,1,'电视' ,0,CURRENT_TIMESTAMP,NULL) ;
+
+
+insert into `sku` values(2735902134,  NULL ,'小米全面屏电视E65A', 'https://raw.githubusercontent.com/wingchi-leung/imageTemporay/main/MiTv-E65A.png', '人工智能系统，高清液晶屏','人工智能语音系统 | 海量影视内容 | 4K 超高清屏 | 杜比音效 | 64位四核处理器 | 2GB + 8GB大存储',
+                         279900,  399900,100,1,'电视' ,CURRENT_TIMESTAMP,NULL) ;
+
+insert into `sku` values(2735902135,  NULL ,'小米电视4X 43英寸', 'https://raw.githubusercontent.com/wingchi-leung/imageTemporay/main/MiTv-4X-43.png', 'FHD全高清屏，人工智能语音','人工智能语音系统 | FHD全高清屏 | 64位四核处理器 | 海量片源 | 1GB+8GB大内存 | 钢琴烤漆',
+                         129900,  149900,100,1,'电视' ,0,CURRENT_TIMESTAMP,NULL) ;
+
+insert into `sku` values(2735902136,  NULL ,'Redmi K20/K20 Pro 怪力魔王保护壳', 'https://raw.githubusercontent.com/wingchi-leung/imageTemporay/main/protectingShell-RedMi-K20.png', '怪力魔王专属定制',
+                         '优选PC材料，强韧张力，经久耐用 / 精选开孔，全面贴合机身 / 手感轻薄细腻，舒适无负担 / 三款颜色可选，彰显个性，与众不同',
+                         3900,  3900,100,1,'保护套' ,0,CURRENT_TIMESTAMP ,NULL) ;
+
+update sku set promotion_type=1 where id=  2735902121;
+update sku set promotion_type=1 where id=  2735902123;
+update sku set promotion_type=1 where id=  2735902124;
+update sku set promotion_type=1 where id=  2735902129;
+update sku set promotion_type=1 where id=  2735902135;
 
 DROP TABLE IF EXISTS `shoppingcart`;
 CREATE TABLE `shoppingcart` (
@@ -249,27 +274,28 @@ CREATE TABLE `order` (
 
 DROP TABLE IF EXISTS `order_detail`;
 CREATE TABLE `order_detail` (
-                                   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单详情id ',
-                                   `order_id` bigint(20) NOT NULL COMMENT '订单id',
-                                   `sku_id` bigint(20) NOT NULL COMMENT 'sku商品id',
-                                   `num` int(4) NOT NULL COMMENT '购买数量',
-                                   `title` varchar(256) NOT NULL COMMENT '商品标题',
-                                   `own_spec` varchar(1024) DEFAULT '' COMMENT '商品动态属性键值集',
-                                   `price` int(16) NOT NULL COMMENT '价格,单位：分',
-                                   `image` varchar(256) DEFAULT '' COMMENT '商品图片',
-                                   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-                                   `update_time` timestamp NULL DEFAULT NULL COMMENT '更新时间',
-                                   PRIMARY KEY (`id`),
-                                   KEY `key_order_id` (`order_id`) USING BTREE
+       `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单详情id ',
+       `order_id` bigint(20) NOT NULL COMMENT '订单id',
+       `sku_id` bigint(20) NOT NULL COMMENT 'sku商品id',
+       `num` int(4) NOT NULL COMMENT '购买数量',
+       `title` varchar(256) NOT NULL COMMENT '商品标题',
+       `own_spec` varchar(1024) DEFAULT '' COMMENT '商品动态属性键值集',
+       `price` int(16) NOT NULL COMMENT '价格,单位：分',
+       `image` varchar(256) DEFAULT '' COMMENT '商品图片',
+       `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+       `update_time` timestamp NULL DEFAULT NULL COMMENT '更新时间',
+       PRIMARY KEY (`id`),
+       KEY `key_order_id` (`order_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='订单详情表';
 
+DROP table if exists `seckill_policy` ;
 
+create table seckill_policy(
+    `id` bigint(20)  PRIMARY  KEY AUTO_INCREMENT  NOT NULL ,
+    `skuid` bigint(20) NOT NULL COMMENT '对应商品id',
+    `buy_limit` int NOT NULL COMMENT '商品限购数量',
+    `price` decimal(18,2)  NOT NULL,
+    `begin_time` timestamp  NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `end_time` timestamp   NULL
+)ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='秒杀商品信息表';
 
-select b.order_id,b.create_time,b.total_fee, a.sku_id,a.num,a.title,a.price,a.image,a.id
-        from `order_detail` a,`order` b
-        where  a.order_id=b.order_id and b.user_id=28;
-
-
-select b.order_id,b.create_time,b.total_fee, a.sku_id,a.num,a.title,a.price,a.image,a.id
-from `order_detail` a,`order` b
-where  a.order_id=b.order_id and b.user_id=#{userId}

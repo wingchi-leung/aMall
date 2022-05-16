@@ -18,8 +18,12 @@ public class LoginController {
 
     @PostMapping(value = {"/login","/"})
     public RespBean login(@RequestBody User user ) {
-        System.out.println(user.toString());
         RespBean respBean = loginService.login(user);
         return respBean;
+    }
+
+    @RequestMapping(value = "/logut")
+    public RespBean logout(){
+        return loginService.logout();
     }
 }

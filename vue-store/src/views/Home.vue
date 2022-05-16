@@ -162,9 +162,7 @@ export default {
     this.$axios
       .get("/api/product/carousel", {})  // resources
       .then(res => {
-        // console.log(res) ;
         this.carousel = res.data.data;
-        // console.log(this.carousel) ;
       })
       .catch(err => {
         return Promise.reject(err);

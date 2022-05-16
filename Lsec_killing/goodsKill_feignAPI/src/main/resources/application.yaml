@@ -1,2 +1,7 @@
-server:
-  port: 3600
+spring:
+  application:
+    name: Feign
+  cloud:
+    nacos:
+      discovery:
+        server-addr:  localhost:8848

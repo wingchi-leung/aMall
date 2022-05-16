@@ -70,6 +70,7 @@
             >{{productDetails.price}}元</span>
           </span>
           <p class="price-sum">总计 : {{productDetails.sellingPrice}}元</p>
+          <p >库存：{{productDetails.stock}}}</p>
         </div>
         <!-- 内容区底部按钮 -->
         <div class="button">
@@ -128,11 +129,8 @@ export default {
     // 获取商品详细信息
     getDetails(val) {
       this.$axios
-        .post("/api/product/getDetails", {
-          productID: val
-        })
+        .get(`/api/product/getDetails/${val}`)
         .then(res => {
-          console.log(res.data);
           this.productDetails = res.data.data;
         })
         .catch(err => {
@@ -146,7 +144,6 @@ export default {
           productID: val
         })
         .then(res => {
-          console.log(res) ;
           this.productPicture = res.data.data;
         })
         .catch(err => {
@@ -160,10 +157,11 @@ export default {
         this.$store.dispatch("setShowLogin", true);
         return;
       }
+      var userId = this.$store.getters.getUser.userId;
       this.$axios
-        .post("/api/user/shoppingCart/addShoppingCart", {
-          user_id: this.$store.getters.getUser.user_id,
-          productDetails: this.productDetails
+        .post(`/api/user/shoppingCart/${userId}`, {
+          product: this.productDetails
+
         })
         .then(res => {
           switch (res.data.code) {

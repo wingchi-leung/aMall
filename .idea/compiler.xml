@@ -10,6 +10,7 @@
         <module name="goodsKill_feignAPI" />
         <module name="goodskill_product" />
         <module name="goodskill_user" />
+        <module name="goodsKill_stock" />
         <module name="goodsKill_order" />
         <module name="goodsKill_gateway" />
       </profile>
@@ -19,6 +20,7 @@
       <module name="goodsKill_gateway" target="8" />
       <module name="goodsKill_order" target="8" />
       <module name="goodskill_product" target="8" />
+      <module name="goodsKill_stock" target="8" />
       <module name="goodskill_user" target="8" />
       <module name="Lsec_killing" target="1.8" />
       <module name="web" target="8" />
@@ -29,6 +31,7 @@
       <module name="goodsKill_feignAPI" options="-parameters" />
       <module name="goodsKill_gateway" options="-parameters" />
       <module name="goodsKill_order" options="-parameters" />
+      <module name="goodsKill_stock" options="-parameters" />
       <module name="goodskill_product" options="-parameters" />
       <module name="goodskill_user" options="-parameters" />
       <module name="web" options="-parameters" />

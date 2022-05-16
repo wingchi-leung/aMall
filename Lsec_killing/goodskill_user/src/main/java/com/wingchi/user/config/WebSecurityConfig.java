@@ -41,12 +41,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/",
                         "/*.html",
-                        "/favicon.ico",
                         "/**/*.html",
                         "/**/*.css",
-                        "/**/*.js",
-                        "/swagger-resources/**",
-                        "/v2/api-docs/**"
+                        "/**/*.js"
                 )
                 .permitAll()
                 .antMatchers("/user/login", "/user/register","/user/hello")

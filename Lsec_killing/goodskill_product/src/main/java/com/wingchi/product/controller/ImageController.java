@@ -1,17 +1,13 @@
 package com.wingchi.product.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.wingchi.product.beans.Image;
 import com.wingchi.product.beans.RespBean;
-import com.wingchi.product.beans.SKU;
-import com.wingchi.product.beans.jsonBean;
+import com.wingchi.product.beans.productDto;
 import com.wingchi.product.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,7 +32,7 @@ public class ImageController {
 
     @PostMapping("/getDetailsPicture")
     public RespBean getDetails(@RequestBody String productId) {
-        jsonBean bean = JSON.parseObject(productId, jsonBean.class);
+        productDto bean = JSON.parseObject(productId, productDto.class);
         List<Image> list = imageService.getDetailPicture(bean.getProductId());
         return new RespBean(list,"001");
     }

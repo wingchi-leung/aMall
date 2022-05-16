@@ -10,4 +10,8 @@ public interface ProductMapper extends BaseMapper<SKU> {
     List<SKU> selectAllBycategory(String category);
 
     List<SKU> selectAllByAllcategory(List<Object> categoryList);
+
+    SKU selectByskuId(Long productId);
+
+    void selectSeckill();
 }

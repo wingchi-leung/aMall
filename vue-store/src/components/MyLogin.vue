@@ -100,8 +100,7 @@ export default {
               password: this.LoginUser.pass
             })
             .then(res => {
-              console.log("user");
-              console.log(res) ;
+
               // “001”代表登录成功，其他的均为失败
               if (res.data.code === "001") {
                 // 隐藏登录组件

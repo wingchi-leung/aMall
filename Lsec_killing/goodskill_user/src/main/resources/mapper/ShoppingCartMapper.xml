@@ -5,18 +5,34 @@
 
 <mapper namespace="com.wingchi.user.mapper.ShoppingCartMapper">
 
-    <resultMap id="CartMap" type="com.wingchi.user.vo.ShoppingCart">
+    <resultMap id="CartMap" type="com.wingchi.user.dto.ShoppingCart">
         <id property="Id" column="cartId"></id>
         <result property="skuId" column="id"></result>
-        <result property="skuName" column="name"></result>
+        <result property="name" column="name"></result>
         <result property="price" column="price"></result>
-        <result property="skuImage" column="images"></result>
+        <result property="images" column="images"></result>
         <result property="amount" column="amount"></result>
     </resultMap>
 
-    <select  id="selectCartById" resultMap="CartMap">
-        select car.id as cartId, sku.id, sku.name,sku.images,car.price,car.amount
-        from shoppingcart car, sku
-        where car.sku_id=sku.id and  car.user_id=#{userId};
+    <insert id="insertProduct" parameterType="com.wingchi.user.dto.ShoppingCart">
+        insert into `shoppingcart` (`user_id`,`sku_id`,`price`,`amount`,`create_time`)
+        values(#{userId},#{cart.skuId},#{cart.price},1,CURRENT_TIMESTAMP)
+    </insert>
+
+    <update id="updateCart">
+        update `shoppingcart` set amount =#{num}
+        where `user_id`=#{userId} and `sku_id`=#{skuId}
+    </update>
+
+    <select  id="selectCartById" resultMap="CartMap" resultType="integer">
+        select cart.id as cartId, sku.id, sku.name,sku.images,cart.price,cart.amount
+        from shoppingcart cart, sku
+        where cart.sku_id=sku.id and  cart.user_id=#{userId};
+    </select>
+
+
+    <select id="queryById" resultType="java.lang.Integer">
+        select `amount` from `shoppingcart`
+        where user_id = #{userId} and sku_id = #{skuId}
     </select>
 </mapper>

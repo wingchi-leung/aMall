@@ -165,14 +165,10 @@ export default {
         this.setShoppingCart([]);
       } else {
         // 用户已经登录,获取该用户的购物车信息
-        //, {  headers: {'token': localStorage.getItem("token")} }
-        this.$axios.post("/api/user/shoppingCart/getShoppingCart", {
-            user_id: val.user_id
-          } )
+        this.$axios.get(`/api/user/shoppingCart/${val.userId}`)
           .then(res => {
             if (res.data.code === "001") {
               // 001 为成功, 更新vuex购物车状态
-              console.log(res.data.data);
               this.setShoppingCart(res.data.data);
             } else {
               // 提示失败信息

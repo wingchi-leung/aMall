@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class jsonBean {
+public class productDto {
     private String categoryName;
     private Long productId ;
 }

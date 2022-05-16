@@ -10,8 +10,8 @@ import java.sql.Timestamp;
 @TableName("sku")
 @Data
 public class SKU {
-    BigInteger id ;
-    BigInteger spuId;
+    Long skuId ;
+    Long spuId;
     String name;
     String images ;
     String title;
