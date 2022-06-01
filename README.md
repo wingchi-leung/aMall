@@ -12,7 +12,7 @@
 
 **感谢@[hfbin](https://github.com/hfbin/Seckill)的开源分享。**
 
-如果作者看到认为不妥的，请联系我将项目删除。 
+
 
 ### 项目介绍
 
