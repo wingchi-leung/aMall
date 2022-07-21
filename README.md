@@ -8,9 +8,6 @@
 
 **感谢[hai-27](https://github.com/hai-27)的开源分享。**
 
-项目的数据库设计是@[hfbin](https://github.com/hfbin/Seckill)的秒杀项目[Seckill](https://github.com/hfbin/Seckill)设计上修改的。
-
-**感谢@[hfbin](https://github.com/hfbin/Seckill)的开源分享。**
 
 
 
